@@ -3,7 +3,7 @@ import cors from "cors";
 import db from "./app/config/config.js";
 import routes from "./app/src/routes/routes.js";
 
-const PORT = 1234;
+const PORT = 4567;
 
 const app = express();
 app.use(express.json());
@@ -20,4 +20,5 @@ try {
 }
 
 db.sync();
+
 //db.sync({ alter: true });

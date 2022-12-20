@@ -1,16 +1,15 @@
-import Rating from "../models/rating.js";
+import Favourite from "../models/Favourite.js";
 
-export const getRating = async (req, res) => {
+export const getFavourites = async (req, res) => {
     try {
-        const rating = await Rating.findOne({
+        const favourites = await Favourite.findAll({
             where: {
-                userId: req.params.userId,
-                movieId: req.params.movieId,
+                userId: req.params.userId
             }
         });
         
-        if (rating) {
-            res.send(rating);
+        if (favourites) {
+            res.send(favourites);
         } else {
             res.sendStatus(404);
         }
@@ -20,13 +19,13 @@ export const getRating = async (req, res) => {
     }
 }
 
-export const createRating = async (req, res) => {
+export const addFavourite = async (req, res) => {
     try {
-        const rating = await Rating.create(req.body);
+        const favourite = await Favourite.create(req.body);
         console.log(req.body)
         res.json({
-            "message": "Rating Created",
-            data: rating
+            "message": "Favourite Created",
+            data: favourite
         });
     } catch (err) {
         console.log(err);
@@ -34,16 +33,16 @@ export const createRating = async (req, res) => {
     }
 }
 
-export const updateRating = async (req, res) => {
+export const updateFavourite = async (req, res) => {
     try {
-        const rating = await Rating.update(req.body, {
+        const Favourite = await Favourite.update(req.body, {
             where: {
                 id: req.params.id
             }
         });
         res.json({
-            "message": "Rating Updated",
-            data: rating
+            "message": "Favourite Updated",
+            data: Favourite
         });
     } catch (err) {
         console.log(err);
@@ -51,15 +50,15 @@ export const updateRating = async (req, res) => {
     }
 }
 
-export const deleteRating = async (req, res) => {
+export const deleteFavourite = async (req, res) => {
     try {
-        await Rating.destroy({
+        await Favourite.destroy({
             where: {
                 id: req.params.id
             }
         });
         res.json({
-            "message": "Rating Deleted"
+            "message": "Favourite Deleted"
         });
     } catch (err) {
         console.log(err);

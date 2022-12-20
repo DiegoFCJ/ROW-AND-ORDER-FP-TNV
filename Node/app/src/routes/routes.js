@@ -1,14 +1,19 @@
 import express from "express";
-
-const API_ROOT = '/api';
-
-import { getRating, createRating, updateRating, deleteRating } from "../controllers/ratings-controller.js";
+import { addFavourite, deleteFavourite, getFavourites, updateFavourite } from "../controllers/favourite-controller.js";
+import { addScore, deleteScore, getRanking, getScore, updateScore } from "../controllers/score-controller.js";
 
 const router = express.Router();
 
-router.get(`${API_ROOT}/rating/:userId/:movieId`, getRating);
-router.post(`${API_ROOT}/rating`, createRating);
-router.patch(`${API_ROOT}/rating/:id`, updateRating);
-router.delete(`${API_ROOT}/rating/:id`, deleteRating);
+router.get(`/favouritesOfUser/:userId`, getFavourites);
+router.post(`/favourite`, addFavourite);
+router.patch(`/favourite/:id`, updateFavourite);
+router.delete(`/favourite/:id`, deleteFavourite);
+
+router.get(`/scoresOfUser/:userId`, getScore);
+
+router.get(`/scores`, getRanking);
+router.post(`/score`, addScore);
+router.patch(`/score/:userId`, updateScore);
+router.delete(`/score/:id`, deleteScore);
 
 export default router;

@@ -3,18 +3,15 @@ import db from "../../config/config.js";
  
 const { DataTypes } = Sequelize;
 
-const Rating = db.define('ratings', {
+const Favourite = db.define('favourites', {
   userId: {
     type: DataTypes.INTEGER
   },
   movieId: {
-    type: DataTypes.INTEGER
-  },
-  rating: {
     type: DataTypes.INTEGER
   }
 }, {
   freezeTableName: true
 });
  
-export default Rating;
+export default Favourite;
