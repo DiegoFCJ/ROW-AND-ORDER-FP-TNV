@@ -6,10 +6,10 @@ import { AppComponent } from './app.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
-import { MainPageComponent } from './main-page/main-page.component';
-import { GamePageComponent } from './game-page/game-page.component';
-import { ReviewPageComponent } from './game-page/review-page/review-page.component';
-import { LoginComponent } from './login/login.component';
+import { MainPageComponent } from './components/main-page/main-page.component';
+import { GamePageComponent } from './components/game-page/game-page.component';
+import { ReviewPageComponent } from './components/review-page/review-page.component';
+import { LoginComponent } from './@shared/login/login.component';
 
 import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
@@ -19,12 +19,12 @@ import { MatSelectModule } from '@angular/material/select';
 import { FormsModule } from '@angular/forms';
 import { MatCardModule } from '@angular/material/card';
 import { NgbRatingModule } from '@ng-bootstrap/ng-bootstrap';
-import { RegisterComponent } from './register/register.component';
-import { RankingComponent } from './ranking/ranking.component';
+import { RegisterComponent } from './@shared/register/register.component';
+import { RankingComponent } from './components/ranking/ranking.component';
 import { MatTableModule } from '@angular/material/table' 
 import { MatPaginatorModule } from '@angular/material/paginator';
-import { ProfileComponent } from './profile/profile.component';
-import { LogoutComponent } from './logout/logout.component';
+import { ProfileComponent } from './components/profile/profile.component';
+import { LogoutComponent } from './@shared/logout/logout.component';
 
 @NgModule({
   declarations: [

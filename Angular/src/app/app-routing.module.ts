@@ -1,12 +1,12 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { GamePageComponent } from './game-page/game-page.component';
-import { MainPageComponent } from './main-page/main-page.component';
-import { ReviewPageComponent } from './game-page/review-page/review-page.component';
-import { LoginComponent } from './login/login.component';
-import { RegisterComponent } from './register/register.component';
-import { RankingComponent } from './ranking/ranking.component';
-import { ProfileComponent } from './profile/profile.component';
+import { GamePageComponent } from './components/game-page/game-page.component';
+import { MainPageComponent } from './components/main-page/main-page.component';
+import { ReviewPageComponent } from './components/review-page/review-page.component';
+import { LoginComponent } from './@shared/login/login.component';
+import { RegisterComponent } from './@shared/register/register.component';
+import { RankingComponent } from './components/ranking/ranking.component';
+import { ProfileComponent } from './components/profile/profile.component';
 
 const routes: Routes = [
   { path: '', component: MainPageComponent },

@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { MovieRootObject } from 'src/models/movies';
-import { User } from 'src/models/user';
+import { MovieRootObject } from 'src/app/models/movies';
+import { User } from 'src/app/models/user';
 import { Router } from '@angular/router';
-import { AuthService } from 'src/services/auth.service';
+import { AuthService } from 'src/app/@core/services/auth.service';
 
 
 @Component({
