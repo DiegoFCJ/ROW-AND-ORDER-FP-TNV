@@ -38,6 +38,8 @@ public class PublicUsersController {
         return "Hello, World!";
     }
 
+    /***************************** USED *****************************/
+
     @PostMapping("/signIn")
     public ResponseEntity<User> signIn(@RequestBody User user) throws AccountNotFoundException, InvalidParameterSpecException {
 
@@ -69,15 +71,25 @@ public class PublicUsersController {
         return new ResponseEntity<>(user, HttpStatus.CONFLICT);
     }
 
+    @GetMapping("/activation")
+    public String activation(@RequestParam String token){
+        return activation.confirmEmail(token);
+    }
+
+    @GetMapping("/allUsersDescending")
+    public Collection<User> allUsersDescendByScore() {
+        return userService.allUsersDescendByScore();
+    }
+
+
+
+
+    /**************************** UNUSED ****************************/
+
     @PostMapping("/botGenerator/{numberOfBots}")
     public void botGenerator(@PathVariable("numberOfBots") int numberOfBots){
         userService.botGenerator(numberOfBots);
     }
-
-    @GetMapping("/activation")
-    public String activation(@RequestParam String token){
-            return activation.confirmEmail(token);
-        }
 
     @GetMapping("/idByUsername/{username}")
     public int getIdByUsername(@PathVariable("username") String username){
@@ -112,11 +124,6 @@ public class PublicUsersController {
     @GetMapping("/allScore")
     public ArrayList<Integer> allScores() {
         return userService.allScores();
-    }
-
-    @GetMapping("/allUsersDescending")
-    public Collection<User> allUsersDescendByScore() {
-        return userService.allUsersDescendByScore();
     }
 
     @GetMapping("/allUsersIncrease")

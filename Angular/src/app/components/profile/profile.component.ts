@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { UserFull, User } from 'src/app/models/user';
+import { UserLocalSt, User } from 'src/app/models/user';
 import { AuthService } from 'src/app/@core/services/auth.service';
-import { MovieAPIService } from 'src/app/@core/services/movie-api.service';
 
 @Component({
   selector: 'tnv-profile',
@@ -11,9 +10,9 @@ import { MovieAPIService } from 'src/app/@core/services/movie-api.service';
 })
 export class ProfileComponent implements OnInit {
 
-  currentUser: Partial<UserFull> = {};
+  currentUser: Partial<UserLocalSt> = {};
 
-  constructor(protected authService: AuthService, private router: Router, protected movieApiSer: MovieAPIService) {}
+  constructor(protected authService: AuthService, private router: Router) {}
 
   ngOnInit(): void {
 
@@ -22,7 +21,7 @@ export class ProfileComponent implements OnInit {
       this.router.navigateByUrl("/login");
     }
     
-    this.currentUser = this.authService.findByUsernameContains();
+    this.currentUser = this.authService.getCurrentUser();
   }
 
 }

@@ -1,7 +1,8 @@
+import { UserLocalSt } from './../../models/user';
 import { HttpClient } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
-import { User } from 'src/app/models/user';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
+import { MatPaginator, PageEvent } from '@angular/material/paginator';
 
 const SBUrl = "http://localhost:8080/api/public";
 
@@ -12,29 +13,43 @@ const SBUrl = "http://localhost:8080/api/public";
 })
 
 export class RankingComponent implements OnInit {
-  usersOrdered!: User[];
-  dataSource: any;
-  
+  displayedColumns = ["count", "name", "surname", "username", "score"];
+  dataSource!: MatTableDataSource<UserLocalSt> 
+  lowValue: number = 0;
+  highValue: number = 0;
+  index!: number[];
+
+
   constructor(private http: HttpClient) { }
-/*
-  @ViewChild(MatPaginator) paginator:any = MatPaginator;
-  ngAfterViewInit() {
-    this.dataSource.paginator = this.paginator;
-  }*/
+
+
+  @ViewChild('paginator') 
+  paginator!: MatPaginator;
+
+  RenderDataTable() {  
+      this.fetchAllUsersDesc().subscribe((res) => {
+        console.log(res);
+        this.dataSource = new MatTableDataSource(res);
+        this.highValue = res.length
+        console.log(this.dataSource);
+      });  
+  } 
+  
+  public getPaginatorData(event: PageEvent): PageEvent {
+    this.lowValue = event.pageIndex * event.pageSize;
+    this.highValue = this.lowValue + event.pageSize;
+    return event;
+  }
+  public refreshlist=()=>{
+    window.location.reload();
+  }
   
   ngOnInit(): void {
-    this.fetchAllUsers();
+    this.RenderDataTable();
   }
   
 
-  fetchAllUsers(){
-    this.http.get<User[]>(`${SBUrl}/allUsersDescending`).subscribe((data)=> {
-      this.usersOrdered = data;
-      this.dataSource = new MatTableDataSource(this.usersOrdered);
-      console.log(this.usersOrdered, this.dataSource);
-    });
+  fetchAllUsersDesc(){
+    return this.http.get<UserLocalSt[]>(`${SBUrl}/allUsersDescending`);
   }
-  
-  displayedColumns = ["count", "name", "surname", "username", "score"];
 }
-

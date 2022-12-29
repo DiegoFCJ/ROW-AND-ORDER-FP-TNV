@@ -25,6 +25,10 @@ import { MatTableModule } from '@angular/material/table'
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { ProfileComponent } from './components/profile/profile.component';
 import { LogoutComponent } from './@shared/logout/logout.component';
+import { ButtonSignComponent } from './@shared/button-sign/button-sign.component';
+import { SignInUpComponent } from './@shared/sign-in-up/sign-in-up.component';
+import { NavBeforeLogComponent } from './@shared/nav-before-log/nav-before-log.component';
+import { NavAfterLogComponent } from './@shared/nav-after-log/nav-after-log.component';
 
 @NgModule({
   declarations: [
@@ -37,6 +41,10 @@ import { LogoutComponent } from './@shared/logout/logout.component';
     RankingComponent,
     ProfileComponent,
     LogoutComponent,
+    ButtonSignComponent,
+    SignInUpComponent,
+    NavBeforeLogComponent,
+    NavAfterLogComponent,
   ],
   imports: [
     BrowserModule,

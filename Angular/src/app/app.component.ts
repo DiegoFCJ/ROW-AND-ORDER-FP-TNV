@@ -14,8 +14,14 @@ import { AuthService } from 'src/app/@core/services/auth.service';
 export class AppComponent implements OnInit {
   title = "TNVLezioni"
 
+  constructor(protected authService: AuthService) {}
+
   
   ngOnInit(): void {
+  }
+
+  isLoggedIn(){
+    return this.authService.isAuthenticated();
   }
 
 

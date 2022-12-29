@@ -1,3 +1,6 @@
+import { DatePipe } from "@angular/common";
+import { DateAdapter } from "@angular/material/core";
+
 export interface User {
   name: string;
   surname: string;
@@ -31,11 +34,16 @@ export interface ScoreInfo {
   score: number
 }
 
-export interface UserFull {
+export interface UserLocalSt {
   id: number;
   name: string;
   surname: string;
   email: string;
   username: string;
-  score: number;
+  score: string;
+  roles: string;
+  registered_on: string;
+  update_on: string;
+  last_log: string;
+  enabled: boolean;
 }

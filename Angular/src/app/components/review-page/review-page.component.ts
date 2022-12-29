@@ -51,7 +51,7 @@ export class ReviewPageComponent implements OnInit, OnChanges {
     comment: e.form.value.comment,
     rating: e.form.value.rating,
     movieId: this.movieID,
-    userId: 3
+    userId: this.authService.getCurrentUser().id
   }
 
   console.log(dbComp)

@@ -16,12 +16,8 @@ import { AuthService } from 'src/app/@core/services/auth.service';
 })
 export class GamePageComponent implements OnInit {
   
-  constructor(private http: HttpClient, private authService: AuthService, protected MovieServ: MovieAPIService, private router: Router) {}
+  constructor(private http: HttpClient, private authService: AuthService, protected MovieServ: MovieAPIService, private router: Router, protected authServ: AuthService) {}
  
-
-
-
-
   ngOnInit(): void {
     if (!this.authService.isAuthenticated()) {
       alert("non puoi accedere a questa pagina se prima non esegui il login")
@@ -33,21 +29,6 @@ export class GamePageComponent implements OnInit {
     for (let i = 0; i < 10; i++) {
       this.getRandomMovie();
     } 
-
-/*      for (let i = 0; i < 10; i++) {
-      const latestId = 30000;
-      const randomId = Math.round(Math.random() * latestId);
-
-      this.MovieServ.getRandomMoviee(
-        `https://api.themoviedb.org/3/movie/${randomId}?api_key=3949444e64e7a9355250d3b1b5c59bf1&language=it-it`
-      ).subscribe( { next: (data)=> {
-        console.log(data);
-        if (data.poster_path) {
-        this.moviee.push(data);
-      }
-    }}
-    );
-  }  */
   }
 
   moviee: MovieRootObject[] = [];
@@ -104,8 +85,8 @@ export class GamePageComponent implements OnInit {
     }
 
     let scoreComp: ScoreInfo = {
-      userId: 3 ,
-      userName: this.MovieServ.userNameLogged,
+      userId: this.authServ.getCurrentUser().id,
+      userName: this.authServ.getCurrentUser().username,
       score: this.MovieServ.rating
 
     }

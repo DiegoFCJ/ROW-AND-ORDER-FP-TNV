@@ -12,10 +12,10 @@ export class RegisterComponent implements OnInit {
   constructor(private authService: AuthService, private router: Router) {}
 
   ngOnInit(): void {
-    if (this.authService.isAuthenticated()) {
+    /*if (this.authService.isAuthenticated()) {
       alert("non puoi registrarti sei gia loggato")
       this.router.navigateByUrl("/");
-    }
+    }*/
   }
 
   register(form: NgForm) {

@@ -1,3 +1,4 @@
+import { SignInUpComponent } from './@shared/sign-in-up/sign-in-up.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { GamePageComponent } from './components/game-page/game-page.component';
@@ -10,13 +11,12 @@ import { ProfileComponent } from './components/profile/profile.component';
 
 const routes: Routes = [
   { path: '', component: MainPageComponent },
-  { path: 'login', component: LoginComponent },
   { path: 'game-page', component: GamePageComponent },
   { path: 'review-page', component: ReviewPageComponent },
   { path: 'main-page', component: MainPageComponent },
-  { path: 'register', component: RegisterComponent },
   { path: 'ranking', component: RankingComponent },
   { path: 'profile', component: ProfileComponent },
+  { path: 'sign', component: SignInUpComponent },
 ];
 
 @NgModule({
