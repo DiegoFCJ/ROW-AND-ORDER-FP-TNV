@@ -67,9 +67,10 @@ export const deleteScore = async (req, res) => {
     }
 }
 
- export const getRanking = async (req, res) => {
+ export const top10 = async (req, res) => {
     try {
         const score = await Score.findAll({
+            limit: 10,
             order: [
                 ["score", "DESC"]
               ]

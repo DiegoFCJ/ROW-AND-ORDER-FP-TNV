@@ -1,11 +1,11 @@
 export interface MovieData {
     comment: String,
-    userId?: number,
-    movieId?: number,
-    rating?: number
+    user_id: number,
+    movie_id: number,
+    rating: number
   }
 
 export interface FavData {
-      userId?: number,
-      movieId?: number,
+      userId: number,
+      movieId: number,
   }

@@ -195,7 +195,17 @@ p span{
 .btnn button{
   border: 0; 
   background: none;
-  margin-bottom: 15px;
+  transform: scale(0.9);
+}
+
+.left-btn{
+  transform: scale(0.7);
+  left: 10px;
+}
+
+.right-btn{
+  transform: scale(0.7);
+  right: 10px;
 }
 
 .modal-body{

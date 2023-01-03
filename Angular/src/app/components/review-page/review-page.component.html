@@ -82,17 +82,15 @@
 
 
 <ng-template #filmCart let-c="close" let-d="dismiss">
-
 <div class="card">
   <div class="row g-0">
     <div class="card-img">
       <button class="close-btn" (click)="d('close-click')">❌</button>
       <img class="img-fluid rounded-start" src="https://image.tmdb.org/t/p/w185/{{movieServ.orderedMoviz[num].poster_path}}">
       
-      
       <div class="fav-btn">
         <button (click)="open(content, movieServ.orderedMoviz[num].id)">
-          <app-button-sign btn_text="Favourite"></app-button-sign>
+          <app-button-sign btn_text="Review"></app-button-sign>
         </button>
       </div>
 
@@ -107,14 +105,14 @@
 </div>
 </ng-template>
 
-<ng-template #details let-c="close" let-d="dismiss">
+<ng-template #details let-d="dismiss">
 <div style="position: relative;">
-  <button class="close-btn" (click)="d('close-click')" (click)="d('close-click')">❌</button>
+  <button class="close-btn" (click)="d('close-click')">❌</button>
   <div class="card-img card-body" style="width: 100%; max-height: 100%;">
-    <h5 class="card-title">{{ movieServ.orderedMoviz[num].original_title }}</h5>
-    <p class="card-text">{{ overviewCheck(movieServ.orderedMoviz[num].overview) }}</p>
-    <p class="card-text">Budget: {{ movieServ.orderedMoviz[num].budget }}</p>
-    <p class="card-text adult">{{ adultsFilm(movieServ.orderedMoviz[num].adult) }}</p>
+    <h5 class="card-title">{{movieServ.orderedMoviz[num].original_title}}</h5>
+    <p class="card-text">{{movieServ.orderedMoviz[num].overview}}</p>
+    <p class="card-text">Budget: {{movieServ.orderedMoviz[num].budget}}</p>
+    <p class="card-text adult">{{adultsFilm(movieServ.orderedMoviz[num].adult)}}</p>
   </div>
 </div>
 
@@ -123,12 +121,11 @@
 
 
 <ng-template #content let-c="close" let-d="dismiss">
-  
-  <button class="close-btn" (click)="d('close click')">❌</button>
 
-  <h4 class="modal-title" >Good Choice!</h4>
-
-  <div class="modal-header"></div>
+  <div class="modal-header">
+    <h4 class="modal-title" >Good Choice!</h4>
+    <button class="close-btn" type="button" (click)="d('Cross click')">❌</button>
+  </div>
 
   <div class="modal-body">
     <form class="format" #data="ngForm" (ngSubmit)="onSubmit(data)">
@@ -140,13 +137,16 @@
       <mat-form-field appearance="fill" style="width: 360px; text-align: center;">
         <input placeholder="This Film Is Wonderfull! I love It!!" matInput type="text" ngModel name="comment" required />
       </mat-form-field>
+      
+      <div class="fav-btn">
+        <button class="left-btn" (click)="saveFavourite()">
+          <app-button-sign btn_text="Save Favourite"></app-button-sign>
+        </button>
+        <button class="right-btn" type="submit" (click)="c('Save click')">
+          <app-button-sign btn_text="Save Comment"></app-button-sign>
+        </button>
+      </div>
     </form>
-  </div>
-
-  <div class="btnn">
-    <button (click)="c('Save click')">
-      <app-button-sign btn_text="Save"></app-button-sign>
-    </button>
   </div>
 
 </ng-template>

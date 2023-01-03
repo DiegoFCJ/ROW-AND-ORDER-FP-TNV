@@ -17,16 +17,12 @@ import { MatTableDataSource } from '@angular/material/table';
 })
 
 export class ReviewPageComponent implements OnInit {
-  currentRate= 2;
+  currentRate: number = 0;
+  movieID: number = 0
   isHide = true;
-  movieID = 0;
-  dbComp!: MovieData;
-  dbFav!: FavData;
   num: number = 0;
-  showDetCheck: boolean = false;
-  hideDetCheck: boolean = false;
-  bntStyle!: string;
   choice!: number;
+  commForm!: MovieData;
 
   constructor(
     protected authServ: AuthService, 
@@ -38,17 +34,9 @@ export class ReviewPageComponent implements OnInit {
   ngOnInit(): void {
     if (!this.authServ.isAuthenticated()) {
       alert("non puoi accedere a questa pagina se prima non esegui il login")
-      this.router.navigateByUrl("/login");
+      this.router.navigateByUrl("/sign");
     }
   }
-
-  orderMovies(){
-    return this.movieServ.orderedMoviz
-  }
-
-  findFilm(numID:number) {
-    this.movieID = numID;
-	}
 
   open(content: any, numID:number) {
 		this.modalService.open(content);
@@ -60,18 +48,40 @@ export class ReviewPageComponent implements OnInit {
   }
 
   onSubmit(e: NgForm) {
-    this.dbComp = {
+
+    let dbComp: MovieData = {
       comment: e.form.value.comment,
       rating: e.form.value.rating,
-      movieId: this.movieID,
-      userId: this.authServ.getCurrentUser().id
+      movie_id: this.movieID,
+      user_id: this.authServ.getCurrentUser().id
     }
-    this.dbFav = {
+  
+    console.log(dbComp)
+  
+    this.http
+        .post<MovieData>('http://localhost:5268/reviews', dbComp)
+        .subscribe((dat) => {}); 
+    }
+
+  saveCommentFromForm(e: NgForm){
+    this.commForm = {
+      comment: e.form.value.comment,
+      rating: e.form.value.rating,
+      movie_id: this.movieID,
+      user_id: this.authServ.getCurrentUser().id
+    }
+  }
+
+  saveComment() {
+    this.http.post<MovieData>('http://localhost:5268/reviews', this.commForm).subscribe((dat) => {}); 
+  }
+
+  saveFavourite(){
+    let dbComp: FavData = {
       userId: this.authServ.getCurrentUser().id,
       movieId: this.movieID
     }
-    this.http.post<FavData>('http://localhost:4567/favourite', this.dbFav); 
-    this.http.post<MovieData>('http://localhost:5268/reviews', this.dbComp); 
+    this.http.post<FavData>('http://localhost:4567/favourite', dbComp).subscribe((dat) => {}); 
   }
 
   numChange(num: number){
@@ -86,20 +96,4 @@ export class ReviewPageComponent implements OnInit {
     }
   }
 
-  showFilmDetails(){
-    if(!this.showDetCheck){
-      this.showDetCheck = true; 
-    }else{
-      this.showDetCheck = false; 
-    }
-  }
-
-  overviewCheck(overview: string){
-    console.log(overview)
-    if(overview != null){
-      return overview;
-    }else{
-      return "this film does not have any overview available, have a look on google, i'm sure you can find something!";
-    }
-  }
 }
