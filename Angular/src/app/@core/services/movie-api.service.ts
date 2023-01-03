@@ -6,9 +6,9 @@ import { MovieRootObject } from 'src/app/models/movies';
   providedIn: 'root',
 })
 export class MovieAPIService {
-  // movie: MovieRootObject[] = [];
 
   orderedMoviz: MovieRootObject[] = [];
+  movie: MovieRootObject[] = [];
   rating: number = 0;
   userNameLogged: string = '';
 
@@ -16,5 +16,9 @@ export class MovieAPIService {
 
   getRandomMoviee(url: any) {
     return this.http.get<MovieRootObject>(url);
+  }
+
+  getCurrentMovie(){
+    const user = JSON.parse(localStorage.getItem("movie") || "") as MovieRootObject;
   }
 }

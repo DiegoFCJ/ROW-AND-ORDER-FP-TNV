@@ -1,18 +1,18 @@
 
 <div class="d-flex align">
   <div class="sign-card">
-    <div class="img d-md-flex" [ngSwitch]="checkChoice">
+    <div class="img d-md-flex" [ngSwitch]="choice">
 
       <div id="visNone" class="center-class" *ngSwitchDefault>
 
         <p>You wish to sign in or sign up?</p>
 
         <button class="sign-change btn">
-          <app-button-sign btn_text="Sign In" (click)="checkChoice = 1"></app-button-sign>
+          <app-button-sign btn_text="Sign In" (click)="choice = 1"></app-button-sign>
         </button>
 
         <button class="sign-change btn">
-          <app-button-sign btn_text="Sign Up" (click)="checkChoice = 2"></app-button-sign>
+          <app-button-sign btn_text="Sign Up" (click)="choice = 2"></app-button-sign>
         </button>
 
       </div>
@@ -27,7 +27,7 @@
         <div class="register-btn center-class">
           <p>You don't have an account?</p>
           <button type="submit">
-            <app-button-sign btn_text="Sign Up" (click)="checkChoice = 2"></app-button-sign>
+            <app-button-sign btn_text="Sign Up" (click)="choice = 2"></app-button-sign>
           </button>
         </div>
       </div>
@@ -36,7 +36,7 @@
         <div class="login-btn center-class">
           <p>You already have an account?</p>
           <button type="submit">
-            <app-button-sign btn_text="Sign In" (click)="checkChoice = 1"></app-button-sign>
+            <app-button-sign btn_text="Sign In" (click)="choice = 1"></app-button-sign>
           </button>
         </div>
       </div>

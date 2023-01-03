@@ -48,10 +48,10 @@ public class PublicUsersController {
         boolean isPasswordPresent = encoder.matches(user.getPassword(), userFound.getPassword());
         boolean isEmailPresent = userService.doesEmailExists(user.getUsername());
 
-        if(isUsernamePresent || isEmailPresent && isPasswordPresent){
+        if((isUsernamePresent || isEmailPresent) && isPasswordPresent){
             return new ResponseEntity<>(userFound, HttpStatus.ACCEPTED);
         }
-        return new ResponseEntity<>(userFound, HttpStatus.UNAUTHORIZED);
+        return new ResponseEntity(userFound, HttpStatus.UNAUTHORIZED);
 
     }
 

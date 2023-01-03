@@ -4,3 +4,8 @@ export interface MovieData {
     movieId?: number,
     rating?: number
   }
+
+export interface FavData {
+      userId?: number,
+      movieId?: number,
+  }

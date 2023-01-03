@@ -10,7 +10,7 @@ import { hasClassName } from '@ng-bootstrap/ng-bootstrap/util/util';
 })
 
 export class SignInUpComponent implements OnInit {
-  checkChoice!: number;
+  choice!: number;
 
   constructor() {}
 

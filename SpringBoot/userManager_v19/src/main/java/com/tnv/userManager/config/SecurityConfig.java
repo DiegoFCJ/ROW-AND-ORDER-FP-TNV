@@ -35,11 +35,7 @@ public class SecurityConfig {
                         .anyRequest().authenticated()
                 )
                 .userDetailsService(myUserDetailsService)
-                .formLogin()
-                    .permitAll()
-                    .loginPage("/api/public/login")
-                    .permitAll()
-                .and().headers(headers -> headers.frameOptions().sameOrigin())
+                .headers(headers -> headers.frameOptions().sameOrigin())
                 .httpBasic(withDefaults())
                 .build();
     }

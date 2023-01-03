@@ -1,7 +1,8 @@
-<app-nav-after-log *ngIf="isLoggedIn(); else notLoggedNavbar"></app-nav-after-log>
 
+<app-nav-after-log *ngIf="isLoggedIn(); else notLoggedNavbar"></app-nav-after-log>
 <ng-template #notLoggedNavbar>
     <app-nav-before-log></app-nav-before-log>
 </ng-template>
-
-<router-outlet></router-outlet>
+<div class="body">
+    <router-outlet></router-outlet>
+</div>
