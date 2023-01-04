@@ -3,18 +3,14 @@
    <p>The Objective is to order the films going from <span> the oldest </span> to <span> the youngest </span></p> 
   </div>
 
-  <div class="cont">
-    <div cdkDropList cdkDropListOrientation="horizontal" class="list" (cdkDropListDropped)="drop($event)">
-      <div class="box" *ngFor="let movieElement of MovieServ.movie" cdkDrag>
-        <img  src="https://image.tmdb.org/t/p/w185/{{movieElement.poster_path}}" [alt]="movieElement.title"> 
-      </div>
+  <div cdkDropList cdkDropListOrientation="horizontal" class="list" (cdkDropListDropped)="drop($event)">
+    <div class="box" *ngFor="let movieElement of MovieServ.movie" cdkDrag>
+      <img  src="https://image.tmdb.org/t/p/w185/{{movieElement.poster_path}}" [alt]="movieElement.title"> 
     </div>
   </div>
 
   <div class="btnn">
-    <button (click)="checkResult()">
-      <app-button-sign btn_text="Send"></app-button-sign>
-    </button>
+      <app-button-sign (click)="checkResult()" btn_text="Send"></app-button-sign>
   </div>
 
   

@@ -6,6 +6,6 @@ export interface MovieData {
   }
 
 export interface FavData {
-      userId: number,
+      userId?: number,
       movieId: number,
   }

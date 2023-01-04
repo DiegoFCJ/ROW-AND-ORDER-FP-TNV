@@ -11,6 +11,8 @@
   position: relative;
   top: 160px;
   text-align: center;
+  left: 50%;
+  translate:  -50px;
 }
 
 button{
@@ -18,14 +20,9 @@ button{
   background: none;
 }
 
-.cont{
-  position: relative;
-}
-
 .list {
-  box-shadow: 0 5px 5px -3px black,
-              0 8px 10px 1px red,
-              0 3px 14px 2px red;
+  box-shadow: 0 5px 50px -3px black,
+              0 3px 95px 2px red;
 
   position: relative;
   left: 50%;

@@ -16,24 +16,24 @@
 </div>
 
 <div class="first-text">
-  <p>This is the list ordered by you</p>
+  <p>This is the list ordered correctly</p>
 </div>
 <div class="cont">
   <div class="list">
-    <div class="box" *ngFor="let movieElement of movieServ.movie; let j = index">
-      <p>{{j+1}}</p>
+    <div class="box" *ngFor="let movieElement of movieServ.orderedMoviz; let j = index">
+      <p>{{j+1}}°</p>
       <img  src="https://image.tmdb.org/t/p/w185/{{movieElement.poster_path}}" [alt]="movieElement.title"> 
     </div>
   </div>
 </div>
 
 <div class="first-text">
-  <p>This is the list ordered correctly</p>
+  <p>This is the list ordered by you</p>
 </div>
 <div class="cont">
   <div class="list">
-    <div class="box" *ngFor="let movieElement of movieServ.orderedMoviz; let j = index">
-      <p>{{j+1}}</p>
+    <div class="box" *ngFor="let movieElement of movieServ.movie; let j = index">
+      <p style="box-shadow: inset red 1px, 1px 1px 3px;">{{j+1}}°</p>
       <img  src="https://image.tmdb.org/t/p/w185/{{movieElement.poster_path}}" [alt]="movieElement.title"> 
     </div>
   </div>
@@ -89,7 +89,7 @@
       <pre>Rate: <b>{{movieServ.currentRate}}</b></pre>
 
       <mat-form-field class="review" appearance="fill">
-        <input placeholder="This Film Is Wonderfull! I love It!!" matInput type="text" ngModel name="comment" required />
+        <input placeholder="This Film Is Wonderful! I love It!!" matInput type="text" ngModel name="comment" required />
       </mat-form-field>
       <button class="btn-bg-none" type="submit" (click)="c('Save click')">
         <app-button-sign btn_text="Save"></app-button-sign>
