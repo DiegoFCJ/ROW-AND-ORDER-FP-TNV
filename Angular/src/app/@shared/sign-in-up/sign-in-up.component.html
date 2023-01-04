@@ -5,15 +5,15 @@
 
       <div id="visNone" class="center-class" *ngSwitchDefault>
 
-        <p>You wish to sign in or sign up?</p>
+        <p>You wish to login or register?</p>
 
-        <button class="sign-change btn">
-          <app-button-sign btn_text="Sign In" (click)="choice = 1"></app-button-sign>
-        </button>
+        <div class="sign-change btn">
+          <app-button-sign btn_text="login" (click)="choice = 1"></app-button-sign>
+        </div>
 
-        <button class="sign-change btn">
-          <app-button-sign btn_text="Sign Up" (click)="choice = 2"></app-button-sign>
-        </button>
+        <div class="sign-change btn">
+          <app-button-sign btn_text="register" (click)="choice = 2"></app-button-sign>
+        </div>
 
       </div>
 
@@ -26,18 +26,14 @@
       <div class="col-12 col-md-6 p-4 p-md-5 sign-change" *ngSwitchCase="1">
         <div class="register-btn center-class">
           <p>You don't have an account?</p>
-          <button type="submit">
-            <app-button-sign btn_text="Sign Up" (click)="choice = 2"></app-button-sign>
-          </button>
+          <app-button-sign type="submit" btn_text="register" (click)="choice = 2"></app-button-sign>
         </div>
       </div>
 
       <div class="col-12 col-md-6 p-4 p-md-5 sign-change" *ngSwitchCase="2">
         <div class="login-btn center-class">
           <p>You already have an account?</p>
-          <button type="submit">
-            <app-button-sign btn_text="Sign In" (click)="choice = 1"></app-button-sign>
-          </button>
+          <app-button-sign type="submit" btn_text="login" (click)="choice = 1"></app-button-sign>
         </div>
       </div>
 

@@ -9,13 +9,11 @@ import { MovieAPIService } from './movie-api.service';
 })
 export class UserService {
   springBootUrl = "http://localhost:8080/api/public";
-  currentUser!: UserLocalSt;
+  currentUser: UserLocalSt = this.authServ.getCurrentUser();
 
   constructor(protected movServ: MovieAPIService, protected authServ: AuthService, private http: HttpClient) { }
 
   saveNewBestScoreOnSpringDb(newScore: number){
-    this.currentUser = this.authServ.getCurrentUser();
-
     if(this.currentUser.score > newScore){
       this.currentUser.score = newScore;
       return this.updateUserScore(this.currentUser);
@@ -25,6 +23,6 @@ export class UserService {
   }
 
   updateUserScore(user: UserLocalSt){
-    return this.http.patch<any>(`${this.springBootUrl}/score/${user.id}`, user.score).subscribe();
+    return this.http.patch<any>(`${this.springBootUrl}/score/${user.id}`, JSON.stringify(1)).subscribe();
   }
 }

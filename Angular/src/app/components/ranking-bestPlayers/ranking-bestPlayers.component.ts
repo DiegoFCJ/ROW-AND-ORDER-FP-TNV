@@ -1,4 +1,4 @@
-import { UserLocalSt } from './../../models/user';
+import { UserLocalSt } from '../../models/user';
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
@@ -7,9 +7,9 @@ import { MatPaginator, PageEvent } from '@angular/material/paginator';
 const SBUrl = "http://localhost:8080/api/public";
 
 @Component({
-  selector: 'app-ranking',
-  templateUrl: './ranking.component.html',
-  styleUrls: ['./ranking.component.scss']
+  selector: 'app-ranking-bestPlayers',
+  templateUrl: './ranking-bestPlayers.component.html',
+  styleUrls: ['./ranking-bestPlayers.component.scss']
 })
 
 export class RankingComponent implements OnInit {
@@ -28,10 +28,8 @@ export class RankingComponent implements OnInit {
 
   RenderDataTable() {  
       this.fetchAllUsersDesc().subscribe((res) => {
-        console.log(res);
         this.dataSource = new MatTableDataSource(res);
         this.highValue = res.length
-        console.log(this.dataSource);
       });  
   } 
   

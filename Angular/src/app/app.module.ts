@@ -20,7 +20,7 @@ import { FormsModule } from '@angular/forms';
 import { MatCardModule } from '@angular/material/card';
 import { NgbRatingModule } from '@ng-bootstrap/ng-bootstrap';
 import { RegisterComponent } from './@shared/register/register.component';
-import { RankingComponent } from './components/ranking/ranking.component';
+import { RankingComponent } from './components/ranking-bestPlayers/ranking-bestPlayers.component';
 import { MatTableModule } from '@angular/material/table' 
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { ProfileComponent } from './components/profile/profile.component';

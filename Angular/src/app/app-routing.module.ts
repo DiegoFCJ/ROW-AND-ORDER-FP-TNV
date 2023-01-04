@@ -4,7 +4,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { GamePageComponent } from './components/game-page/game-page.component';
 import { MainPageComponent } from './components/main-page/main-page.component';
 import { ReviewPageComponent } from './components/review-page/review-page.component';
-import { RankingComponent } from './components/ranking/ranking.component';
+import { RankingComponent } from './components/ranking-bestPlayers/ranking-bestPlayers.component';
 import { ProfileComponent } from './components/profile/profile.component';
 
 const routes: Routes = [
@@ -12,7 +12,7 @@ const routes: Routes = [
   { path: 'main-page', component: MainPageComponent },
   { path: 'game-page', component: GamePageComponent },
   { path: 'review-page', component: ReviewPageComponent },
-  { path: 'ranking', component: RankingComponent },
+  { path: 'ranking-bestPlayers', component: RankingComponent },
   { path: 'profile', component: ProfileComponent },
   { path: 'sign', component: SignInUpComponent },
 ];
