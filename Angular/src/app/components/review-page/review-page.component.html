@@ -6,54 +6,9 @@
   <p>You can click on the rotating film cards to see the card of each film</p>
 </div>
 <div class="slider">
-  <span style="--i:0;">
-    <button (click)="open(filmCart, movieServ.orderedMoviz[numChange(0)].id)">
-      <img src="https://image.tmdb.org/t/p/w185/{{ movieServ.orderedMoviz[0].poster_path }}"/>
-    </button>
-  </span>
-  <span style="--i:1;">
-    <button (click)="open(filmCart, movieServ.orderedMoviz[numChange(1)].id)">
-      <img src="https://image.tmdb.org/t/p/w185/{{ movieServ.orderedMoviz[1].poster_path }}"/>
-    </button>
-  </span>
-  <span style="--i:2;">
-    <button (click)="open(filmCart, movieServ.orderedMoviz[numChange(2)].id)">
-      <img src="https://image.tmdb.org/t/p/w185/{{ movieServ.orderedMoviz[2].poster_path }}"/>
-    </button>
-  </span>
-  <span style="--i:3;">
-    <button (click)="open(filmCart, movieServ.orderedMoviz[numChange(3)].id)">
-      <img src="https://image.tmdb.org/t/p/w185/{{ movieServ.orderedMoviz[3].poster_path }}"/>
-    </button>
-  </span>
-  <span style="--i:4;">
-    <button (click)="open(filmCart, movieServ.orderedMoviz[numChange(4)].id)">
-      <img src="https://image.tmdb.org/t/p/w185/{{ movieServ.orderedMoviz[4].poster_path }}"/>
-    </button>
-  </span>
-  <span style="--i:5;">
-    <button (click)="open(filmCart, movieServ.orderedMoviz[numChange(5)].id)">
-      <img src="https://image.tmdb.org/t/p/w185/{{ movieServ.orderedMoviz[5].poster_path }}"/>
-    </button>
-  </span>
-  <span style="--i:6;">
-    <button (click)="open(filmCart, movieServ.orderedMoviz[numChange(6)].id)">
-      <img src="https://image.tmdb.org/t/p/w185/{{ movieServ.orderedMoviz[6].poster_path }}"/>
-    </button>
-  </span>
-  <span style="--i:7;">
-    <button (click)="open(filmCart, movieServ.orderedMoviz[numChange(7)].id)">
-      <img src="https://image.tmdb.org/t/p/w185/{{ movieServ.orderedMoviz[7].poster_path }}"/>
-    </button>
-  </span>
-  <span style="--i:8;">
-    <button (click)="open(filmCart, movieServ.orderedMoviz[numChange(8)].id)">
-      <img src="https://image.tmdb.org/t/p/w185/{{ movieServ.orderedMoviz[8].poster_path }}"/>
-    </button>
-  </span>
-  <span style="--i:9;">
-    <button (click)="open(filmCart, movieServ.orderedMoviz[numChange(9)].id)">
-      <img src="https://image.tmdb.org/t/p/w185/{{ movieServ.orderedMoviz[9].poster_path }}"/>
+  <span *ngFor="let movieEl of movieServ.movie; let i = index" style="--i:{{i}};">
+    <button (click)="open(filmCart, movieServ.orderedMoviz[numChange(i)].id)">
+      <img src="https://image.tmdb.org/t/p/w185/{{ movieServ.orderedMoviz[i].poster_path }}"/>
     </button>
   </span>
 </div>
@@ -63,7 +18,8 @@
 </div>
 <div class="cont">
   <div class="list">
-    <div class="box" *ngFor="let movieElement of movieServ.movie">
+    <div class="box" *ngFor="let movieElement of movieServ.movie; let j = index">
+      <p>{{j+1}}</p>
       <img  src="https://image.tmdb.org/t/p/w185/{{movieElement.poster_path}}" [alt]="movieElement.title"> 
     </div>
   </div>
@@ -72,9 +28,10 @@
 <div class="first-text">
   <p>This is the list ordered correctly</p>
 </div>
-<div class="cont" style="padding-bottom: 60px;">
+<div class="cont">
   <div class="list">
-    <div class="box" *ngFor="let movieElement of movieServ.orderedMoviz">
+    <div class="box" *ngFor="let movieElement of movieServ.orderedMoviz; let j = index">
+      <p>{{j+1}}</p>
       <img  src="https://image.tmdb.org/t/p/w185/{{movieElement.poster_path}}" [alt]="movieElement.title"> 
     </div>
   </div>
@@ -88,17 +45,12 @@
       <button class="close-btn" (click)="d('close-click')">❌</button>
       <img class="img-fluid rounded-start" src="https://image.tmdb.org/t/p/w185/{{movieServ.orderedMoviz[num].poster_path}}">
       
-      <div class="fav-btn">
-        <button (click)="open(content, movieServ.orderedMoviz[num].id)">
-          <app-button-sign btn_text="Review"></app-button-sign>
-        </button>
+      <div class="show-card-btn">
+        <app-button-sign class="all-btn btn-l" type="button" btn_text="Review" (click)="open(content, movieServ.orderedMoviz[num].id)"></app-button-sign>
+        <app-button-sign class="all-btn btn-cent" type="button" btn_text="Favourite" (click)="saveFavourite()"></app-button-sign>
+        <app-button-sign class="all-btn btn-r" type="button" btn_text="Details" (click)="justOpenTempl(details)"></app-button-sign>
       </div>
 
-      <div class="show-card-btn">
-        <button  (click)="justOpenTempl(details)">
-          <app-button-sign btn_text="More Details"></app-button-sign>
-        </button>
-      </div>
 
     </div>
   </div>
@@ -130,22 +82,15 @@
   <div class="modal-body">
     <form class="format" #data="ngForm" (ngSubmit)="onSubmit(data)">
 
-      <ngb-rating [(rate)]="currentRate" ngModel name="rating" style="font-size: 30px; color: red;"></ngb-rating>
+      <ngb-rating class="rating" [(rate)]="currentRate" ngModel name="rating"></ngb-rating>
       <hr />
       <pre>Rate: <b>{{currentRate}}</b></pre>
 
-      <mat-form-field appearance="fill" style="width: 360px; text-align: center;">
+      <mat-form-field class="review" appearance="fill">
         <input placeholder="This Film Is Wonderfull! I love It!!" matInput type="text" ngModel name="comment" required />
       </mat-form-field>
       
-      <div class="fav-btn">
-        <button class="left-btn" (click)="saveFavourite()">
-          <app-button-sign btn_text="Save Favourite"></app-button-sign>
-        </button>
-        <button class="right-btn" type="submit" (click)="c('Save click')">
-          <app-button-sign btn_text="Save Comment"></app-button-sign>
-        </button>
-      </div>
+      <app-button-sign class="fav-btn all-btn" type="submit" (click)="c('Save click')" btn_text="Save"></app-button-sign>
     </form>
   </div>
 

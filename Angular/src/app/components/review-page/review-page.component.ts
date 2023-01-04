@@ -18,7 +18,7 @@ import { MatTableDataSource } from '@angular/material/table';
 
 export class ReviewPageComponent implements OnInit {
   currentRate: number = 0;
-  movieID: number = 0
+  movieID!: number;
   isHide = true;
   num: number = 0;
   choice!: number;

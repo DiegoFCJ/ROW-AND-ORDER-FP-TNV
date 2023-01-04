@@ -1,8 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { MovieRootObject } from 'src/app/models/movies';
-import { User } from 'src/app/models/user';
-import { Router } from '@angular/router';
 import { AuthService } from 'src/app/@core/services/auth.service';
 
 
@@ -15,15 +11,9 @@ export class AppComponent implements OnInit {
   title = "TNVLezioni"
 
   constructor(protected authService: AuthService) {}
-
   
   ngOnInit(): void {
   }
-
-  isLoggedIn(){
-    return this.authService.isAuthenticated();
-  }
-
 
 } 
 

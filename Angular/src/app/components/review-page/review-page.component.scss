@@ -1,10 +1,11 @@
-/** ** 3D carousel ** **/
 
+/** ** fonts ** **/
 *{
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
   font-size: 15px;
 }
 
+/** ** texts ** **/
 p{
   margin-top: 30px;
   font-size: 36px;
@@ -39,13 +40,34 @@ p span{
   }
 }
 
+
+/** ** first text before each movie list ** **/
+.first-text{
+  position: relative;
+  left: 50%;
+  translate: -50%;
+  width: 89%;
+  box-shadow: 
+  0 5px 5px -3px black,
+  0 5px 6px 1px red,
+  0 3px 6px 2px red;
+  height: 50px;
+}
+
+.first-text p{
+  position: relative;
+  top: 10px;
+  bottom: 10px;
+}
+
+/** ** 3D carousel ** **/
+
 .body{
   height: 80vh;
   display: flex;
   align-items: center;
   justify-content: center;
 }
-
 
 .slider{
   position: relative;
@@ -99,7 +121,7 @@ p span{
   transform: translateY(-20px) scale(1.1);
 }
 
-/** ** film cards ** **/
+/** ** buttons ** **/
 
 .close-btn{
   position: absolute;
@@ -118,29 +140,56 @@ p span{
   transform: scale(2);
 }
 
-.card-img .show-card-btn{
+.btn-l{
+  transform: scale(0.65);
   position: absolute;
-  bottom: 10px;
-  right: 4px;
-  transform: scale(0.8);
+  left: -25px;
 }
 
-.card-img .fav-btn{
+.btn-r{
+  transform: scale(0.65);
   position: absolute;
-  bottom: 10px;
-  left: 4px;
-  transform: scale(0.8);
+  right: -25px;
 }
 
-.card-img .show-card-btn button, .card-img .fav-btn button{
+.btn-cent{
+  transform: scale(0.65);
+  position: absolute;
+  left: 50%;
+  translate: -50%;
+}
+
+.show-card-btn{
+  position: relative;
+  width: 100%;
+  bottom: 50px;
+}
+
+
+.all-btn{
   border-radius: 50px;
   border: 0; 
   box-shadow: inset
-  red 0 0 0.5em 0,
-  black 0 0 0.5em 0,
-  white 0 0 0.5em 0;
+  red 0 0 0.5em 3px,
+  black 0 0 0.5em 4px,
+  white 0 0 0.5em 6px;
 }
 
+.all-btn:hover{
+  box-shadow: none;
+}
+
+/** ** all cards ** **/
+::ng-deep .modal{
+  width: 402px;
+  max-width: 1200px;
+  position: absolute;
+  top: 50px;
+  left: 50%;
+  translate: -50%;
+}
+
+/** ** film cards ** **/
 .card{
   width: 399px;
   max-height: 600px; 
@@ -178,36 +227,11 @@ p span{
   height: 598px;
 }
 
-::ng-deep .modal{
-  width: 402px;
-  max-width: 1200px;
-  position: absolute;
-  top: 50px;
-  left: 50%;
-  translate: -50%;
+.adult{
+  margin-bottom: 15px;
 }
 
-.btnn{
-  align-items: center;
-  text-align: center;
-}
-
-.btnn button{
-  border: 0; 
-  background: none;
-  transform: scale(0.9);
-}
-
-.left-btn{
-  transform: scale(0.7);
-  left: 10px;
-}
-
-.right-btn{
-  transform: scale(0.7);
-  right: 10px;
-}
-
+/** ** review ** **/
 .modal-body{
   max-height: 600px;
   align-items: center;
@@ -221,11 +245,17 @@ p span{
   text-align: center;
 }
 
-.adult{
-  margin-bottom: 15px;
+.rating{
+  font-size: 30px; 
+  color: red;
 }
 
+.review{
+  width: 360px; 
+  text-align: center;
+}
 
+/** ** film lists ** **/
 .list {
   margin-top: 10px;
   margin-bottom: 100px;
@@ -257,21 +287,4 @@ p span{
   height: 240px;
 }
 
-.first-text{
-  position: relative;
-  left: 50%;
-  translate: -50%;
-  width: 89%;
-  box-shadow: 
-  0 5px 5px -3px black,
-  0 5px 6px 1px red,
-  0 3px 6px 2px red;
-  height: 50px;
-}
-
-.first-text p{
-  position: relative;
-  top: 10px;
-  bottom: 10px;
-}
 
