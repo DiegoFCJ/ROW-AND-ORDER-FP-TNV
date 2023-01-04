@@ -40,7 +40,7 @@ export interface UserLocalSt {
   surname: string;
   email: string;
   username: string;
-  score: string;
+  score: number;
   roles: string;
   registered_on: string;
   update_on: string;

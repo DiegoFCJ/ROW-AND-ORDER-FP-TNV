@@ -8,13 +8,12 @@ import { of } from "rxjs";
   providedIn: "root",
 })
 export class AuthService {
-  constructor(private router: Router, private http: HttpClient) {}
   springBootUrl = "http://localhost:8080/api/public";
+
+  constructor(private router: Router, private http: HttpClient) {}
 
   login(loginData: LoginDTO) {
     console.log("auth service.ts", loginData);
-
-
     return this.http.post<Partial<LoginDTO>>(`${this.springBootUrl}/signIn`, loginData);
   }
     

@@ -1,13 +1,15 @@
 <div class="first-text">
-<p>You totalized <span>{{movieServ.rating}}</span> Scores </p>
+<p>You Totalized <span>{{movieServ.rating}}</span> Scores </p>
 </div>
-
+<div class="first-text">
+<p>Your Best Score Is: <span>{{userServ.saveNewBestScoreOnSpringDb(movieServ.rating)}}</span></p>
+</div>
 <div class="first-text">
   <p>You can click on the rotating film cards to see the card of each film</p>
 </div>
 <div class="slider">
-  <span *ngFor="let movieEl of movieServ.movie; let i = index" style="--i:{{i}};">
-    <button (click)="open(filmCart, movieServ.orderedMoviz[numChange(i)].id)">
+  <span *ngFor="let movieEl of movieServ.orderedMoviz; let i = index" style="--i:{{i}};">
+    <button (click)="movieServ.open(filmCart, movieServ.orderedMoviz[movieServ.numChange(i)].id)">
       <img src="https://image.tmdb.org/t/p/w185/{{ movieServ.orderedMoviz[i].poster_path }}"/>
     </button>
   </span>
@@ -43,12 +45,12 @@
   <div class="row g-0">
     <div class="card-img">
       <button class="close-btn" (click)="d('close-click')">❌</button>
-      <img class="img-fluid rounded-start" src="https://image.tmdb.org/t/p/w185/{{movieServ.orderedMoviz[num].poster_path}}">
+      <img class="img-fluid rounded-start" src="https://image.tmdb.org/t/p/w185/{{movieServ.orderedMoviz[movieServ.num].poster_path}}">
       
       <div class="show-card-btn">
-        <app-button-sign class="all-btn btn-l" type="button" btn_text="Review" (click)="open(content, movieServ.orderedMoviz[num].id)"></app-button-sign>
-        <app-button-sign class="all-btn btn-cent" type="button" btn_text="Favourite" (click)="saveFavourite()"></app-button-sign>
-        <app-button-sign class="all-btn btn-r" type="button" btn_text="Details" (click)="justOpenTempl(details)"></app-button-sign>
+        <app-button-sign class="all-btn btn-l" type="button" btn_text="Review" (click)="movieServ.open(content, movieServ.orderedMoviz[movieServ.num].id)"></app-button-sign>
+        <app-button-sign class="all-btn btn-cent" type="button" btn_text="Favourite" (click)="movieServ.saveFavourite()"></app-button-sign>
+        <app-button-sign class="all-btn btn-r" type="button" btn_text="Details" (click)="movieServ.justOpenTempl(details)"></app-button-sign>
       </div>
 
 
@@ -61,10 +63,10 @@
 <div style="position: relative;">
   <button class="close-btn" (click)="d('close-click')">❌</button>
   <div class="card-img card-body" style="width: 100%; max-height: 100%;">
-    <h5 class="card-title">{{movieServ.orderedMoviz[num].original_title}}</h5>
-    <p class="card-text">{{movieServ.orderedMoviz[num].overview}}</p>
-    <p class="card-text">Budget: {{movieServ.orderedMoviz[num].budget}}</p>
-    <p class="card-text adult">{{adultsFilm(movieServ.orderedMoviz[num].adult)}}</p>
+    <h5 class="card-title">{{movieServ.orderedMoviz[movieServ.num].original_title}}</h5>
+    <p class="card-text">{{movieServ.orderedMoviz[movieServ.num].overview}}</p>
+    <p class="card-text">Budget: {{movieServ.orderedMoviz[movieServ.num].budget}}</p>
+    <p class="card-text adult">{{movieServ.adultsFilm(movieServ.orderedMoviz[movieServ.num].adult)}}</p>
   </div>
 </div>
 
@@ -80,17 +82,18 @@
   </div>
 
   <div class="modal-body">
-    <form class="format" #data="ngForm" (ngSubmit)="onSubmit(data)">
+    <form class="format" #data="ngForm" (ngSubmit)="movieServ.onSubmit(data)">
 
-      <ngb-rating class="rating" [(rate)]="currentRate" ngModel name="rating"></ngb-rating>
+      <ngb-rating class="rating" [(rate)]="movieServ.currentRate" ngModel name="rating"></ngb-rating>
       <hr />
-      <pre>Rate: <b>{{currentRate}}</b></pre>
+      <pre>Rate: <b>{{movieServ.currentRate}}</b></pre>
 
       <mat-form-field class="review" appearance="fill">
         <input placeholder="This Film Is Wonderfull! I love It!!" matInput type="text" ngModel name="comment" required />
       </mat-form-field>
-      
-      <app-button-sign class="fav-btn all-btn" type="submit" (click)="c('Save click')" btn_text="Save"></app-button-sign>
+      <button class="btn-bg-none" type="submit" (click)="c('Save click')">
+        <app-button-sign btn_text="Save"></app-button-sign>
+      </button>
     </form>
   </div>
 

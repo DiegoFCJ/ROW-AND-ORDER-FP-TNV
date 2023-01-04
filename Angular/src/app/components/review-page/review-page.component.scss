@@ -166,9 +166,13 @@ p span{
 }
 
 
+.btn-bg-none{
+  border: none;
+  background: none;
+}
+
 .all-btn{
   border-radius: 50px;
-  border: 0; 
   box-shadow: inset
   red 0 0 0.5em 3px,
   black 0 0 0.5em 4px,
@@ -239,10 +243,11 @@ p span{
 }
 
 .modal-title{
-  margin-top: 40px;
+  position: relative;
+  left: 50%;
+  translate: -50%;
+  top: 20px;
   max-height: 600px;
-  align-items: center;
-  text-align: center;
 }
 
 .rating{

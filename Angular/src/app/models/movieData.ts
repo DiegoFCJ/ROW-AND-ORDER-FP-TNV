@@ -1,7 +1,7 @@
 export interface MovieData {
     comment: String,
-    user_id: number,
-    movie_id: number,
+    userId: number,
+    movieId: number,
     rating: number
   }
 
