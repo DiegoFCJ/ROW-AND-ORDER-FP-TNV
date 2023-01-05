@@ -5,9 +5,11 @@ const { DataTypes } = Sequelize;
 
 const Favourite = db.define('favourites', {
   userId: {
+    unique: "fav",
     type: DataTypes.INTEGER
   },
   movieId: {
+    unique: "fav",
     type: DataTypes.INTEGER
   }
 }, {

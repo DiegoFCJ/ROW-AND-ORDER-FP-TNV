@@ -1,48 +1,45 @@
+import { FullFavData } from './../../models/movieData';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { Router } from '@angular/router';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { FavData, MovieData } from 'src/app/models/movieData';
 import { MovieRootObject } from 'src/app/models/movies';
+import { ScoreInfo } from 'src/app/models/user';
 import { AuthService } from './auth.service';
+import { FavouritesService } from './favourites.service';
+import { map } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class MovieAPIService {
+  randomMovies: MovieRootObject[] = [];
+  ordMovies: MovieRootObject[] = [];
 
-  orderedMoviz: MovieRootObject[] = [];
-  movie: MovieRootObject[] = [];
   rating: number = 0;
   userNameLogged: string = '';
-
-
-  
   currentRate: number = 0;
   movieID!: number;
   isHide = true;
   num: number = 0;
   choice!: number;
   commForm!: MovieData;
+
   dbFav!: FavData;
   dbComp!: MovieData;
 
+  favListForCheck: FullFavData[] = [];
+  lengthOfArr:number = 200;
 
 
-  constructor(private modalService: NgbModal, protected authServ: AuthService, private http: HttpClient) {}
+  constructor(private router: Router, private modalService: NgbModal, protected authServ: AuthService, private http: HttpClient, protected favServ: FavouritesService) {}
 
-
-
-  getRandomMoviee(url: any) {
-    return this.http.get<MovieRootObject>(url);
-  }
 
   getCurrentMovie(){
     const user = JSON.parse(localStorage.getItem("movie") || "") as MovieRootObject;
   }
-
-
-
   
   open(content: any, numID:number) {
 		this.modalService.open(content);
@@ -64,13 +61,14 @@ export class MovieAPIService {
     this.http.post<MovieData>('http://localhost:5268/reviews', this.dbComp).subscribe(); 
     }
 
-  saveFavourite(){
-    this.dbFav = {
-      userId: this.authServ.getCurrentUser().id,
-      movieId: this.movieID
+    saveFavourite(){
+      this.dbFav = {
+        userId: this.authServ.getCurrentUser().id,
+        movieId: this.movieID
+      }
+
+      this.favServ.saveFavOnDb(this.dbFav).subscribe(item => { console.log(item) });
     }
-    this.http.post<FavData>('http://localhost:4567/favourite', this.dbFav).subscribe(); 
-  }
 
   numChange(num: number){
       return this.num = num;
@@ -84,6 +82,48 @@ export class MovieAPIService {
     }
   }
 
+  getRandomMovie() {
+    const latestId = 30000;
+    const randomId = Math.round(Math.random() * latestId);
 
-  
+    this.getMovieById(randomId).subscribe({
+      next: (res) => {
+
+        if (res.poster_path !== null) {
+          this.randomMovies.push(res);
+
+          this.ordMovies.push(res);
+          this.ordMovies.sort((a, b) => a.release_date > b.release_date? 1: b.release_date > a.release_date? -1: 0)
+        } else {
+          this.getRandomMovie();
+        }
+      },
+      error: () => {
+        this.getRandomMovie();
+      }
+    });
+  }
+
+  getMovieById(id: number){
+    return this.http.get<MovieRootObject>(`https://api.themoviedb.org/3/movie/${id}?api_key=3949444e64e7a9355250d3b1b5c59bf1&language=en-en`);
+  }
+
+  checkResult(){
+    
+    this.router.navigate(['/review-page']);
+    for( let i = 0; i < 10; i++){
+      if(this.randomMovies[i] === this.ordMovies[i]){
+        this.rating = this.rating +10;
+      }
+    }
+
+    let scoreComp: ScoreInfo = {
+      userId: this.authServ.getCurrentUser().id,
+      userName: this.authServ.getCurrentUser().username,
+      score: this.rating
+
+    }
+
+    this.http.post<ScoreInfo>(`http://localhost:4567/score`, scoreComp).subscribe(); 
+  }
 }

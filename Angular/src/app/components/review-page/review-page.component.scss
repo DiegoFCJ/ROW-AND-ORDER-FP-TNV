@@ -47,10 +47,7 @@ p span{
   left: 50%;
   translate: -50%;
   width: 89%;
-  box-shadow: 
-  0 5px 5px -3px black,
-  0 5px 6px 1px red,
-  0 3px 6px 2px red;
+  text-shadow: -2px 1px 3px rgb(30, 28, 28);
   height: 50px;
 }
 
@@ -82,15 +79,15 @@ p span{
   margin-bottom: 60vh;
 }
 
+
 @keyframes rotate{
   0%{
-    transform: perspective(1000px) rotateY(0deg);
+    transform: perspective(900px) rotateY(0deg);
   }
   100%{
-    transform: perspective(1000px) rotateY(360deg);
+    transform: perspective(900px) rotateY(360deg);
   }
 }
-
 .slider span{
   position: absolute;
   top: 0;
@@ -238,7 +235,7 @@ p span{
 /** ** review ** **/
 .modal-body{
   max-height: 600px;
-  align-items: center;
+  align-items: center; 
   text-align: center;
 }
 

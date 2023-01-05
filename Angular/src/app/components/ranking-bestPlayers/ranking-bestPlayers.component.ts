@@ -19,9 +19,7 @@ export class RankingComponent implements OnInit {
   highValue: number = 0;
   index!: number[];
 
-
   constructor(private http: HttpClient) { }
-
 
   @ViewChild('paginator') 
   paginator!: MatPaginator;
@@ -38,6 +36,7 @@ export class RankingComponent implements OnInit {
     this.highValue = this.lowValue + event.pageSize;
     return event;
   }
+
   public refreshlist=()=>{
     window.location.reload();
   }
@@ -46,8 +45,7 @@ export class RankingComponent implements OnInit {
     this.RenderDataTable();
   }
   
-
   fetchAllUsersDesc(){
     return this.http.get<UserLocalSt[]>(`${SBUrl}/allUsersDescending`);
   }
-}
+} 

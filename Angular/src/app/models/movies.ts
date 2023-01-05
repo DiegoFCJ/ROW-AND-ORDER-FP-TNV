@@ -39,7 +39,7 @@ export interface MovieRootObject {
   
   interface Productioncompany {
     id: number;
-    logo_path?: any;
+    logo_path: any;
     name: string;
     origin_country: string;
   }

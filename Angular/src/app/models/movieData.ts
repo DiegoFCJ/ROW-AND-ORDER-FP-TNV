@@ -7,5 +7,13 @@ export interface MovieData {
 
 export interface FavData {
       userId?: number,
-      movieId: number,
+      movieId: number
   }
+
+  export interface FullFavData {
+        id: number,
+        userId: number,
+        movieId: number,
+        createdAt: Date,
+        updatedAt: Date
+    }

@@ -4,13 +4,13 @@
   </div>
 
   <div cdkDropList cdkDropListOrientation="horizontal" class="list" (cdkDropListDropped)="drop($event)">
-    <div class="box" *ngFor="let movieElement of MovieServ.movie" cdkDrag>
+    <div class="box" *ngFor="let movieElement of movieServ.randomMovies" cdkDrag>
       <img  src="https://image.tmdb.org/t/p/w185/{{movieElement.poster_path}}" [alt]="movieElement.title"> 
     </div>
   </div>
 
   <div class="btnn">
-      <app-button-sign (click)="checkResult()" btn_text="Send"></app-button-sign>
+      <app-button-sign (click)="movieServ.checkResult()" btn_text="Send"></app-button-sign>
   </div>
 
   

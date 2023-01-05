@@ -29,6 +29,8 @@ import { ButtonSignComponent } from './@shared/button-sign/button-sign.component
 import { SignInUpComponent } from './@shared/sign-in-up/sign-in-up.component';
 import { NavBeforeLogComponent } from './@shared/nav-before-log/nav-before-log.component';
 import { NavAfterLogComponent } from './@shared/nav-after-log/nav-after-log.component';
+import { FavouritesCarouselComponent } from './@shared/favourites-carousel/favourites-carousel.component';
+import { RankingBestGamesComponent } from './components/ranking-best-games/ranking-best-games.component';
 
 @NgModule({
   declarations: [
@@ -45,6 +47,8 @@ import { NavAfterLogComponent } from './@shared/nav-after-log/nav-after-log.comp
     LogoutComponent,
     NavBeforeLogComponent,
     NavAfterLogComponent,
+    FavouritesCarouselComponent,
+    RankingBestGamesComponent,
   ],
   imports: [
     BrowserModule,
