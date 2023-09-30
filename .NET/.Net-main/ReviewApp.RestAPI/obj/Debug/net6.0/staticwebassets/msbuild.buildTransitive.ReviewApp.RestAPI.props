@@ -1,3 +1,0 @@
-﻿<Project>
-  <Import Project="..\buildMultiTargeting\ReviewApp.RestAPI.props" />
-</Project>

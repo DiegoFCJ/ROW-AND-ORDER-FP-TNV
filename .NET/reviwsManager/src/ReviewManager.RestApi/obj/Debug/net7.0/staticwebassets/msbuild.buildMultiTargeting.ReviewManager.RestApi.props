@@ -1,3 +1,0 @@
-﻿<Project>
-  <Import Project="..\build\ReviewManager.RestApi.props" />
-</Project>
