@@ -1,60 +1,60 @@
 # ROW AND ORDER
 
-## Descrizione
-ROW AND ORDER è il progetto finale del corso TNV Academy. Questo mini gioco web è progettato per offrire un'esperienza interattiva agli utenti, permettendo loro di eseguire login e registrazione, visualizzare un ranking degli utenti, e lasciare commenti sui film presenti nel gioco. Il gameplay consiste nel riordinare i film in base a parametri randomici forniti all'inizio del gioco.
+## Description
+ROW AND ORDER is the final project of the TNV Academy course. This web mini-game is designed to provide an interactive experience to users, allowing them to perform login and registration, view user rankings, and leave comments on movies present in the game. The gameplay consists of reordering movies based on random parameters provided at the start of the game.
 
-## Tecnologie Utilizzate
+## Technologies Used
 - **Frontend**: Angular
 - **Backend**: 
   - Node.js
   - Spring Boot
   - .NET
 
-## Prerequisiti
-Assicurati di avere i seguenti strumenti installati:
-- [Node.js](https://nodejs.org/) (versione LTS consigliata)
-- [Java JDK](https://www.oracle.com/java/technologies/javase-jdk11-downloads.html) (per Spring Boot)
-- [.NET SDK](https://dotnet.microsoft.com/download/dotnet) (per il backend .NET)
-- [Angular CLI](https://angular.io/cli) (installabile tramite npm)
+## Prerequisites
+Make sure you have the following tools installed:
+- [Node.js](https://nodejs.org/) (LTS version recommended)
+- [Java JDK](https://www.oracle.com/java/technologies/javase-jdk11-downloads.html) (for Spring Boot)
+- [.NET SDK](https://dotnet.microsoft.com/download/dotnet) (for .NET backend)
+- [Angular CLI](https://angular.io/cli) (installable via npm)
 
-## Installazione
+## Installation
 
 ### Frontend (Angular)
-1. Naviga nella directory `angular-frontend`.
-2. Installa le dipendenze con il comando:
+1. Navigate to the `angular-frontend` directory.
+2. Install dependencies with the command:
    ```bash
    npm install
    ```
 ### Backend (Node.js)
-1. Naviga nella directory node-backend.
-2. Installa le dipendenze con il comando:
+1. Navigate to the `node-backend` directory.
+2. Install dependencies with the command:
     ```bash
     npm install
     ```
 ### Backend (Spring Boot)
-1. Naviga nella directory springboot-backend.
-2. Assicurati di avere Maven installato. Esegui il comando:
+1. Navigate to the `springboot-backend` directory.
+2. Make sure you have Maven installed. Run the command:
     ```bash
     mvn install
     ```
 
 ### Backend (.NET)
-1. Naviga nella directory dotnet-backend.
-2. Esegui il comando per ripristinare le dipendenze e avviare il progetto:
+1. Navigate to the `dotnet-backend` directory.
+2. Run the command to restore dependencies and start the project:
     ```bash
     dotnet restore
     dotnet run
     ```
 
-## Dipendenze per Modulo
+## Dependencies by Module
 
 ### Frontend - Angular
 
-Nome applicazione: `tnvlezioni`
+Application name: `tnvlezioni`
 
-#### Versione di Angular: `14.2.0`
+#### Angular Version: `14.2.0`
 
-#### Dipendenze principali
+#### Main Dependencies
 - **@angular/animations**: `^14.2.0`
 - **@angular/cdk**: `^13.0.0`
 - **@angular/common**: `^14.2.0`
@@ -73,16 +73,16 @@ Nome applicazione: `tnvlezioni`
 - **vanilla-tilt**: `^1.8.0`
 - **zone.js**: `~0.11.4`
 
-#### Comandi utili per Angular
-- **Avvio**: `ng serve`
+#### Useful Angular Commands
+- **Start**: `ng serve`
 - **Build**: `ng build`
 - **Test**: `ng test`
 
 ### Backend - Node.js
 
-Nome applicazione: `backend`
+Application name: `backend`
 
-#### Dipendenze principali
+#### Main Dependencies
 - **express**: `^4.18.1`
 - **cors**: `^2.8.5`
 - **mysql2**: `^2.3.3`
@@ -91,94 +91,93 @@ Nome applicazione: `backend`
 #### DevDependencies
 - **sequelize-cli**: `^6.4.1`
 
-#### Comandi utili per Node.js
-- **Avvio**: `node src/index.js`
-- **Test**: Puoi aggiungere comandi personalizzati nel `package.json`.
+#### Useful Node.js Commands
+- **Start**: `node src/index.js`
+- **Test**: You can add custom commands in `package.json`.
 
 ### Backend - Spring Boot
 
-#### Versione di Spring Boot: `3.0.0`
-#### Versione di Java: `19`
+#### Spring Boot Version: `3.0.0`
+#### Java Version: `19`
 
-#### Dipendenze principali
-- **spring-boot-starter-thymeleaf**: per il rendering di template HTML.
-- **spring-boot-starter-data-jpa**: per l'integrazione con JPA e gestione database.
-- **spring-boot-starter-mail**: per le funzionalità di invio mail.
-- **spring-boot-starter-security**: per autenticazione e autorizzazione.
-- **spring-boot-starter-web**: per creare REST API.
-- **lombok**: per ridurre il boilerplate di codice (richiede `annotationProcessor`).
-- **mysql-connector-j**: driver per la connessione con database MySQL.
+#### Main Dependencies
+- **spring-boot-starter-thymeleaf**: for HTML template rendering.
+- **spring-boot-starter-data-jpa**: for JPA integration and database management.
+- **spring-boot-starter-mail**: for mail sending functionality.
+- **spring-boot-starter-security**: for authentication and authorization.
+- **spring-boot-starter-web**: for creating REST APIs.
+- **lombok**: to reduce code boilerplate (requires `annotationProcessor`).
+- **mysql-connector-j**: driver for MySQL database connection.
 
-#### Dipendenze per i Test
-- **spring-boot-starter-test**: `per esecuzione di test`
-- **spring-security-test**: per il test di funzionalità di sicurezza.
+#### Test Dependencies
+- **spring-boot-starter-test**: for test execution
+- **spring-security-test**: for testing security features.
 
-#### Comandi utili per Spring Boot
-- **Avvio**: `mvn spring-boot:run`
+#### Useful Spring Boot Commands
+- **Start**: `mvn spring-boot:run`
 - **Test**: `mvn test`
 
 ### Backend - .NET
 
-#### Versione Target .NET: `6.0` e `7.0`
+#### Target .NET Version: `6.0` and `7.0`
 
-#### Dipendenze principali
-- **Microsoft.EntityFrameworkCore**: `6.0.11` per l'ORM di Microsoft.
-- **Microsoft.EntityFrameworkCore.Design**: `6.0.11` per strumenti di design di Entity Framework.
-- **Pomelo.EntityFrameworkCore.MySql**: `6.0.2` per il supporto a MySQL.
-- **Swashbuckle.AspNetCore**: `6.2.3` e `6.4.0` per la generazione automatica di documentazione API (Swagger).
-- **Microsoft.AspNet.WebApi.Cors**: `5.2.9` per abilitare CORS in API .NET.
+#### Main Dependencies
+- **Microsoft.EntityFrameworkCore**: `6.0.11` for Microsoft's ORM.
+- **Microsoft.EntityFrameworkCore.Design**: `6.0.11` for Entity Framework design tools.
+- **Pomelo.EntityFrameworkCore.MySql**: `6.0.2` for MySQL support.
+- **Swashbuckle.AspNetCore**: `6.2.3` and `6.4.0` for automatic API documentation generation (Swagger).
+- **Microsoft.AspNet.WebApi.Cors**: `5.2.9` to enable CORS in .NET APIs.
 
-#### Dipendenze per i Test
-- **Microsoft.NET.Test.Sdk**: `17.3.2` per esecuzione dei test.
-- **xunit**: `2.4.2` e **xunit.runner.visualstudio**: `2.4.5` per framework e runner di test.
-- **coverlet.collector**: `3.1.2` per la raccolta dei dati di copertura del codice.
+#### Test Dependencies
+- **Microsoft.NET.Test.Sdk**: `17.3.2` for test execution.
+- **xunit**: `2.4.2` and **xunit.runner.visualstudio**: `2.4.5` for test framework and runner.
+- **coverlet.collector**: `3.1.2` for code coverage data collection.
 
-#### Comandi utili per .NET
-- **Ripristino pacchetti**: `dotnet restore`
-- **Avvio dell'applicazione**: `dotnet run`
-- **Esecuzione test**: `dotnet test`
+#### Useful .NET Commands
+- **Package restore**: `dotnet restore`
+- **Application start**: `dotnet run`
+- **Run tests**: `dotnet test`
 
-
-## Struttura del Progetto
+## Project Structure
 
     /project-root
-    ├── angular-frontend/              # Applicazione Angular
-    ├── node-backend/                  # Applicazione Node.js
-    ├── springboot-backend/            # Applicazione Spring Boot
-    ├── dotnet-backend/                # Applicazione .NET
-    ├── README.md                      # Documentazione del progetto
-    └── .gitignore                     # File di esclusione per Git
+    ├── angular-frontend/              # Angular Application
+    ├── node-backend/                  # Node.js Application
+    ├── springboot-backend/            # Spring Boot Application
+    ├── dotnet-backend/                # .NET Application
+    ├── README.md                      # Project Documentation
+    └── .gitignore                     # Git Exclusion File
     
-## Esecuzione del Progetto
-### Avvio del Frontend
-1. Naviga nella directory angular-frontend.
-2. Avvia il server di sviluppo con:
+## Running the Project
+### Starting the Frontend
+1. Navigate to the angular-frontend directory.
+2. Start the development server with:
     ```bash
     ng serve
     ```
-3. Apri il browser e vai su http://localhost:4200.
+3. Open your browser and go to http://localhost:4200.
 
-### Avvio del Backend
-1. Backend Node.js:
-    - Naviga nella directory node-backend e avvia il server con:
+### Starting the Backend
+1. Node.js Backend:
+    - Navigate to the node-backend directory and start the server with:
         ```bash
         node src/index.js
         ```
-2. Backend Spring Boot:
-    - Naviga nella directory springboot-backend e avvia il comando:
+2. Spring Boot Backend:
+    - Navigate to the springboot-backend directory and run the command:
         ```bash
         mvn spring-boot:run
         ```
 
-3. Backend .NET:
-    - Naviga nella directory dotnet-backend e avvia il comando:
+3. .NET Backend:
+    - Navigate to the dotnet-backend directory and run the command:
         ```bash
         dotnet run
         ```
 
-## Test
-I test possono essere eseguiti per ogni parte del progetto seguendo le istruzioni specifiche:
-- Angular: Usa il comando ng test nella directory angular-frontend.
-- Node.js: Aggiungi script di test nel package.json e utilizza npm test.
-- Spring Boot: Esegui i test con mvn test.
-- .NET: Usa il comando dotnet test.
+## Testing
+Tests can be run for each part of the project following the specific instructions:
+- Angular: Use the ng test command in the angular-frontend directory.
+- Node.js: Add test scripts in package.json and use npm test.
+- Spring Boot: Run tests with mvn test.
+- .NET: Use the dotnet test command.
